@@ -1,0 +1,30 @@
+@mixin plusCrossIcon($color) {
+  &::after,
+  &::before {
+    content: "";
+    display: block;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: $color;
+  }
+  &::after {
+    height: 100%;
+    width: 0.1rem;
+  }
+  &::before {
+    height: 0.1rem;
+    width: 100%;
+  }
+}
+
+@mixin button($background, $color) {
+  padding: 5px 20px;
+  border-radius: 0.35rem;
+  border: 0px;
+  background: $background;
+  color: $color;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
