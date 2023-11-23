@@ -12,7 +12,7 @@
     "css": "sass ./src/styles/style.scss:dist/style.css",
     "css:watch": "sass --watch ./src/styles/style.scss:dist/style.css",
     "ts:watch": "tsc --watch",
-    "build": "npm-run-all css:watch ts:watch",
+    "build": "npm-run-all css ts:watch",
     "watch:server": "nodemon './dist/main.js' --watch './dist/'"
   },
   "author": "Ponsakthi Anand",
