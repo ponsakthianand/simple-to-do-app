@@ -186,5 +186,22 @@ a {
       border: 2px solid #ccc;
       margin-right: 1rem;
     }
+    &.over {
+      border-top: 2px solid $lightBlue;
+      box-shadow: none;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    width: 80%;
+    margin: 50px auto;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    width: 80%;
+    margin: 50px auto;
   }
 }

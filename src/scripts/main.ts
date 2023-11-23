@@ -172,3 +172,66 @@ function saveLocalStorage(text: string, index: number): void {
 }
 
 // drag and drop trying
+let dragElement: HTMLElement | null = null;
+
+function handleDragStart(this: HTMLElement, e: DragEvent): void {
+  dragElement = this;
+
+  e.dataTransfer!.effectAllowed = 'move';
+  e.dataTransfer!.setData('text/html', this.outerHTML);
+
+  this.classList.add('dragElem');
+}
+
+function handleDragOver(this: HTMLElement, e: DragEvent): boolean {
+  if (e.preventDefault) {
+    e.preventDefault();
+  }
+  this.classList.add('over');
+
+  e.dataTransfer!.dropEffect = 'move';
+
+  return false;
+}
+
+function handleDragEnter(this: HTMLElement, e: DragEvent): void {
+  // this / e.target is the current hover target.
+}
+
+function handleDragLeave(this: HTMLElement, e: DragEvent): void {
+  this.classList.remove('over');
+}
+
+function handleDrop(this: HTMLElement, e: DragEvent): boolean {
+  if (e.stopPropagation) {
+    e.stopPropagation();
+  }
+
+  if (dragElement !== this) {
+    this.parentNode!.removeChild(dragElement as HTMLElement);
+    const dropHTML = e.dataTransfer!.getData('text/html');
+    this.insertAdjacentHTML('beforebegin', dropHTML);
+    const dropElem = this.previousSibling as HTMLElement;
+    addDnDHandlers(dropElem);
+  }
+  this.classList.remove('over');
+  return false;
+}
+
+function handleDragEnd(this: HTMLElement, e: DragEvent): void {
+  this.classList.remove('over');
+}
+
+function addDnDHandlers(elm: HTMLElement): void {
+  elm.addEventListener('dragstart', handleDragStart, false);
+  elm.addEventListener('dragenter', handleDragEnter, false);
+  elm.addEventListener('dragover', handleDragOver, false);
+  elm.addEventListener('dragleave', handleDragLeave, false);
+  elm.addEventListener('drop', handleDrop, false);
+  elm.addEventListener('dragend', handleDragEnd, false);
+}
+
+const cols: NodeListOf<HTMLElement> = document.querySelectorAll(
+  '#mainList .listGroupItem'
+);
+[].forEach.call(cols, addDnDHandlers);
