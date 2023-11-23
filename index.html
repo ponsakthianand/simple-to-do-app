@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="Simple To-Do App" />
+  <meta name="description" content="Test" />
+  <meta name="author" content="Ponsakthi Anand" />
+  <title>Simple To-Do App</title>
+  <link rel="stylesheet" href="src/styles/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="taskAddBox">
+      <div class="card">
+        <div class="cardHeader">
+          <h5>Add New Task</h5>
+        </div>
+        <div class="cardBody">
+          <form id="addingForm" class="formGroup" action="">
+            <input class="formControl" type="text" placeholder="Enter a task" />
+            <button type="submit" class="button addNew success">
+              <i class="icon add"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="list-box">
+      <div class="card">
+        <div class="cardHeader">
+          <h5>To Do List</h5>
+          <a href="" class="button danger deleteAll rounded" id="delAll">
+            Delete All
+          </a>
+        </div>
+        <div class="cardBody">
+          <ul id="mainList" class="listGroup">
+            <li id="topLi" class="listGroupItem displayNone">
+              <span class="check button action markAsComplete icon" title="click here to mark as complete"></span>
+              <span class="cardLink listItem lineThrought">
+                <!--To-do Text Here-->
+              </span>
+              <span class="deleteItem button action delete icon cross"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="dist/main.js"></script>
+</body>
+
+</html>

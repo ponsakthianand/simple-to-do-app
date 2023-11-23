@@ -1,0 +1,234 @@
+@import "./utilities.scss";
+@import "./mixin.scss";
+
+$black: black;
+$white: rgb(254, 254, 254);
+$bluishGray: #373b5e;
+$bluishGrayLight: #7c84a3;
+$darkGray: rgb(78, 78, 78);
+$borderRadius: 25px;
+$bgMild: rgb(246, 243, 255);
+$pink: rgba(238, 174, 202, 1);
+$lightBlue: rgba(148, 187, 233, 1);
+$bluishPink: #a056c5;
+$successGreen: #01cb81;
+$dangerRed: #fe0141;
+
+@mixin plusCrossIcon($color) {
+  &::after,
+  &::before {
+    content: "";
+    display: block;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: $color;
+  }
+  &::after {
+    height: 100%;
+    width: 0.1rem;
+  }
+  &::before {
+    height: 0.1rem;
+    width: 100%;
+  }
+}
+
+@mixin button($background, $color) {
+  padding: 5px 20px;
+  border-radius: 0.35rem;
+  border: 0px;
+  background: $background;
+  color: $color;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+html {
+  font-size: 15px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+body {
+  color: $bluishGray;
+  background: rgb(238, 174, 202);
+  background: linear-gradient(320deg, $pink 0%, $lightBlue 100%) fixed;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.displayNone {
+  display: none;
+}
+
+.card {
+  background-color: $white;
+  border-radius: $borderRadius;
+  margin-bottom: 20px;
+  .cardHeader {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h5 {
+      font-size: 0.85rem;
+      margin: 0;
+      color: $bluishGrayLight;
+      text-transform: uppercase;
+    }
+  }
+  .cardBody {
+    padding: 0 20px 20px 20px;
+  }
+}
+
+.lineThrought {
+  text-decoration: line-through;
+}
+
+.icon {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-indent: -9999px;
+  vertical-align: middle;
+  width: 1em;
+  &.add {
+    @include plusCrossIcon($white);
+  }
+  &.cross {
+    @include plusCrossIcon(red);
+    &::after,
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+  &.tick {
+    &::after,
+    &::before {
+      content: "";
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+    }
+    &::before {
+      border: 0.1rem solid $successGreen;
+      border-right: 0;
+      border-top: 0;
+      height: 0.5em;
+      transform: translate(-50%, -75%) rotate(-45deg);
+      width: 0.9em;
+    }
+    &::after {
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.button {
+  &.success {
+    @include button($successGreen, $white);
+  }
+  &.danger {
+    @include button($dangerRed, $white);
+  }
+}
+
+.container {
+  width: 40%;
+  margin: 50px auto;
+  .taskAddBox {
+    @extend .card;
+  }
+  .formGroup {
+    display: flex;
+    .formControl {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: $white;
+      background-image: none;
+      border: 0.1rem solid #bcc3ce;
+      border-radius: 0.35rem;
+      color: $bluishGray;
+      display: block;
+      height: 1.8rem;
+      line-height: 1.2rem;
+      max-width: 100%;
+      outline: 0;
+      padding: 0.25rem 0.4rem;
+      margin-right: 0.5rem;
+      position: relative;
+      transition:
+        background 0.2s,
+        border 0.2s,
+        box-shadow 0.2s,
+        color 0.2s;
+      width: 100%;
+      &:focus {
+        border-color: $lightBlue;
+        box-shadow: 0 0 0 0.1rem rgba(87, 85, 217, 0.2);
+      }
+    }
+  }
+
+  .listGroupItem {
+    &:not(.displayNone) {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    &:not(:last-child) {
+      padding: 0 0 10px;
+      border-bottom: 1px solid $bgMild;
+    }
+    &:not(:nth-child(2)) {
+      padding-top: 10px;
+    }
+    .listItem {
+      color: $bluishGray;
+      width: 100%;
+      text-align: left;
+    }
+    .check,
+    .deleteItem {
+      cursor: pointer;
+    }
+    .check {
+      padding: 10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      margin-right: 1rem;
+    }
+  }
+}

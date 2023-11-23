@@ -1,0 +1,199 @@
+html {
+  font-size: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  color: #373b5e;
+  background: rgb(238, 174, 202);
+  background: linear-gradient(320deg, rgb(238, 174, 202) 0%, rgb(148, 187, 233) 100%) fixed;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.displayNone {
+  display: none;
+}
+
+.card, .container .taskAddBox {
+  background-color: rgb(254, 254, 254);
+  border-radius: 25px;
+  margin-bottom: 20px;
+}
+.card .cardHeader, .container .taskAddBox .cardHeader {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .cardHeader h5, .container .taskAddBox .cardHeader h5 {
+  font-size: 0.85rem;
+  margin: 0;
+  color: #7c84a3;
+  text-transform: uppercase;
+}
+.card .cardBody, .container .taskAddBox .cardBody {
+  padding: 0 20px 20px 20px;
+}
+
+.lineThrought {
+  text-decoration: line-through;
+}
+
+.icon {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-indent: -9999px;
+  vertical-align: middle;
+  width: 1em;
+}
+.icon.add::after, .icon.add::before {
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(254, 254, 254);
+}
+.icon.add::after {
+  height: 100%;
+  width: 0.1rem;
+}
+.icon.add::before {
+  height: 0.1rem;
+  width: 100%;
+}
+.icon.cross::after, .icon.cross::before {
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: red;
+}
+.icon.cross::after {
+  height: 100%;
+  width: 0.1rem;
+}
+.icon.cross::before {
+  height: 0.1rem;
+  width: 100%;
+}
+.icon.cross::after, .icon.cross::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.icon.tick::after, .icon.tick::before {
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+.icon.tick::before {
+  border: 0.1rem solid #01cb81;
+  border-right: 0;
+  border-top: 0;
+  height: 0.5em;
+  transform: translate(-50%, -75%) rotate(-45deg);
+  width: 0.9em;
+}
+.icon.tick::after {
+  transform: translate(-50%, -50%);
+}
+
+.button.success {
+  padding: 5px 20px;
+  border-radius: 0.35rem;
+  border: 0px;
+  background: #01cb81;
+  color: rgb(254, 254, 254);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.button.danger {
+  padding: 5px 20px;
+  border-radius: 0.35rem;
+  border: 0px;
+  background: #fe0141;
+  color: rgb(254, 254, 254);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.container {
+  width: 40%;
+  margin: 50px auto;
+}
+.container .formGroup {
+  display: flex;
+}
+.container .formGroup .formControl {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: rgb(254, 254, 254);
+  background-image: none;
+  border: 0.1rem solid #bcc3ce;
+  border-radius: 0.35rem;
+  color: #373b5e;
+  display: block;
+  height: 1.8rem;
+  line-height: 1.2rem;
+  max-width: 100%;
+  outline: 0;
+  padding: 0.25rem 0.4rem;
+  margin-right: 0.5rem;
+  position: relative;
+  transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
+  width: 100%;
+}
+.container .formGroup .formControl:focus {
+  border-color: rgb(148, 187, 233);
+  box-shadow: 0 0 0 0.1rem rgba(87, 85, 217, 0.2);
+}
+.container .listGroupItem:not(.displayNone) {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.container .listGroupItem:not(:last-child) {
+  padding: 0 0 10px;
+  border-bottom: 1px solid rgb(246, 243, 255);
+}
+.container .listGroupItem:not(:nth-child(2)) {
+  padding-top: 10px;
+}
+.container .listGroupItem .listItem {
+  color: #373b5e;
+  width: 100%;
+  text-align: left;
+}
+.container .listGroupItem .check,
+.container .listGroupItem .deleteItem {
+  cursor: pointer;
+}
+.container .listGroupItem .check {
+  padding: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  margin-right: 1rem;
+}/*# sourceMappingURL=style.css.map */
